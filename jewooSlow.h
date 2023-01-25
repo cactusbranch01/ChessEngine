@@ -7,6 +7,7 @@
 
 
 class jewooSlow {
+    main;
 };
 
 
