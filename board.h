@@ -12,3 +12,5 @@ class board {
 
 
 #endif //MATRIXCHESSENGINECODE_BOARD_H
+
+// test comment
