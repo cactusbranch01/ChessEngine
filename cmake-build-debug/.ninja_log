@@ -1,9 +1,8 @@
 # ninja log v5
-2	299	6963806356016013	build.ninja	63705ed317dd2083
+2	299	6968252882136082	build.ninja	63705ed317dd2083
 11	131	6963806399996357	CMakeFiles/matrixChessEngineCode.dir/board.cpp.obj	ae1986cfe4db5ac8
-0	527	6963806404005919	CMakeFiles/matrixChessEngineCode.dir/main.cpp.obj	2215e2eb01ab90c9
-529	783	6963806406452018	matrixChessEngineCode.exe	9dadcf2ddb8847f
-4	1741	6963807948358207	CMakeFiles/matrixChessEngineCode.dir/main.cpp.obj	2215e2eb01ab90c9
-1744	1975	6963807950648086	matrixChessEngineCode.exe	9dadcf2ddb8847f
 4	2052	6963808013658682	CMakeFiles/matrixChessEngineCode.dir/main.cpp.obj	2215e2eb01ab90c9
 2053	2234	6963808015344650	matrixChessEngineCode.exe	9dadcf2ddb8847f
+5	98	6968252922831446	CMakeFiles/matrixChessEngineCode.dir/board.cpp.obj	48fdb2b052180284
+1	1227	6968252934121629	CMakeFiles/matrixChessEngineCode.dir/main.cpp.obj	70184b3eef9e9ea8
+1230	1313	6968252934943364	matrixChessEngineCode.exe	7f39353d53f7b581
