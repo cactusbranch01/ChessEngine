@@ -4,11 +4,22 @@
 
 #ifndef MATRIXCHESSENGINECODE_BOARD_H
 #define MATRIXCHESSENGINECODE_BOARD_H
+#include <string>
 
 
-class board {
+
+class Board {
+    int** board;
+
+
+public:
+    explicit Board();
+    std::string printBoard();
 
 };
 
 
 #endif //MATRIXCHESSENGINECODE_BOARD_H
+
+// test comment
+// test comment 2
