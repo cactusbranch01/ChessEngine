@@ -5,16 +5,18 @@
 #ifndef MATRIXCHESSENGINECODE_BOARD_H
 #define MATRIXCHESSENGINECODE_BOARD_H
 #include <string>
+using namespace std;
 
 
 
 class Board {
-    int** board;
+public:
+    int board[8][8];
 
 
 public:
     explicit Board();
-    std::string printBoard();
+    string printBoard();
 
 };
 

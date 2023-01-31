@@ -3,35 +3,44 @@
 //
 #include <bits/stdc++.h>
 #include "Board.h"
+#include <string>
 using namespace std;
 
 Board::Board()
 {
-    int board[8][8]= {{4, 2, 3, 6, 5, 3, 2, 4},
-                      {1, 1, 1, 1, 1, 1, 1, 1},
-                      {0,0,0,0,0,0,0,0},
-                      {0,0,0,0,0,0,0,0},
-                      {0,0,0,0,0,0,0,0},
-                      {0,0,0,0,0,0,0,0},
-                      {-1,-1,-1,-1,-1,-1,-1,-1},
-                      {-4,-2,-3,-6,-5,-3,-2,-4}};
+    int input[64] = {4, 2, 3, 6, 5, 3, 2, 4, 1, 1, 1, 1, 1, 1, 1, 1, 0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0
+                     ,0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, -1,-1,-1,-1,-1,-1,-1,-1, -4,-2,-3,-6,-5,-3,-2,-4};
+    int count=0;
+    for(int i=0;i<8;i++)
+    {
+        for(int j=0;j<8;j++)
+        {
+            board[i][j]= input[count++];
+        }
+    }
+
+    int test[3]= {1,2,3};
+
 
 }
 
 string Board::printBoard(){
 
-    string result;
+    string result ="";
 
     for(int i=0;i<8;i++)
     {
         for(int j=0;j<8;j++)
         {
-
-            result+=to_string(board[i][j]);
+           cout<<(board[i][j]);
 
         }
-        result+="\n";
+        cout<< endl;
+
     }
 
-    return "result";
+
+
+
+    return result;
 }
