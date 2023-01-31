@@ -11,7 +11,7 @@ using namespace std;
 
 class Board {
 public:
-    int board[8][8];
+    int board[8][8] ;
 
 
 public:
