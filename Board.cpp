@@ -16,7 +16,6 @@ Board::Board()
                       {-1,-1,-1,-1,-1,-1,-1,-1},
                       {-4,-2,-3,-6,-5,-3,-2,-4}};
 
-    cout<<board[1][1];
 }
 
 string Board::printBoard(){
@@ -29,6 +28,7 @@ string Board::printBoard(){
         {
 
             result+=to_string(board[i][j]);
+
         }
         result+="\n";
     }
