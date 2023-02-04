@@ -18,7 +18,7 @@ public:
     explicit Board();
     explicit Board(int input[8][8]);
 
-    void makeMove(int intial_pos_row, int inital_pos_col, int final_pos_row, int final_pos_col);
+    void makeMove(int initial_pos_row, int initial_pos_col, int final_pos_row, int final_pos_col);
     void castle(int row_of_rook, int col_of_rook);
     string printBoard();
 

@@ -49,16 +49,14 @@ void Board::makeMove(int initial_pos_row, int initial_pos_col, int final_pos_row
 
 void Board::castle(int row_of_rook, int col_of_rook)
 {
-    if(col_of_rook==0)
-    {
+    if(col_of_rook==0){
         board[row_of_rook][1] = 6;
         board[row_of_rook][3] = 0;
         board[row_of_rook][2]= 4;
         board[row_of_rook][col_of_rook]= 0;
     }
 
-    if(col_of_rook==7)
-    {
+    if(col_of_rook==7){
         board[row_of_rook][5] = 6;
         board[row_of_rook][3] = 0;
         board[row_of_rook][4]= 4;
@@ -70,10 +68,10 @@ string Board::printBoard(){
 
     string result ="";
 
-    for(int i=0;i<8;i++)
-    {
-        for(int j=0;j<8;j++)
-        {
+    for(int i=0;i<8;i++){
+
+        for(int j=0;j<8;j++){
+
            result+=to_string(board[i][j]);
 
         }
