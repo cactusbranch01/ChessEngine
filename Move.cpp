@@ -17,35 +17,66 @@ string colLetter(int col)
     else { return"h";}
 }
 
-Move::Move(int row1, int col1, int row2, int col2)
+Move::Move(int sq1, int sq2, int piece, int take)
 {
-    initial_row = row1;
-    initial_col = col1;
-    final_row = row2;
-    final_col = col2;
+    initial = sq1 * piece;
+    final = sq2 * take;
 }
 
-int Move::getInitialRow()
+int Move::getInitial()
 {
-    return initial_row;
+    return initial;
+}
+
+int Move::getFinal()
+{
+    return final;
+}
+
+int Move::getInitialRow() {
+    if (initial % 67 == 0) { return initial / 67; }
+    else if (initial % 71 == 0) { return initial / 71; }
+    else if (initial % 73 == 0) { return initial / 73; }
+    else if (initial % 79 == 0) { return initial / 79; }
+    else if (initial % 83 == 0) { return initial / 83; }
+    else if (initial % 89 == 0) { return initial / 89; }
+    else { return initial / 97; }
 }
 
 int Move::getFinalRow()
 {
-    return final_row;
+    if (final % 67 == 0) { return final / 67; }
+    else if (final % 71 == 0) { return final / 71; }
+    else if (final % 73 == 0) { return final / 73; }
+    else if (final % 79 == 0) { return final / 79; }
+    else if (final % 83 == 0) { return final / 83; }
+    else if (final % 89 == 0) { return final / 89; }
+    else { return final / 97; }
 }
 
 int Move::getInitialCol()
 {
-    return initial_col;
+    if (initial % 67 == 0) { return initial % 67; }
+    else if (initial % 71 == 0) { return initial % 71; }
+    else if (initial % 73 == 0) { return initial % 73; }
+    else if (initial % 79 == 0) { return initial % 79; }
+    else if (initial % 83 == 0) { return initial % 83; }
+    else if (initial % 89 == 0) { return initial % 89; }
+    else { return initial % 97; }
 }
 
 int Move::getFinalCol()
 {
-    return final_col;
+    if (final % 67 == 0) { return final % 67; }
+    else if (final % 71 == 0) { return final % 71; }
+    else if (final % 73 == 0) { return final % 73; }
+    else if (final % 79 == 0) { return final % 79; }
+    else if (final % 83 == 0) { return final % 83; }
+    else if (final % 89 == 0) { return final % 89; }
+    else { return final % 97; }
 }
 
-string Move::printMove(int piece, int capture)
+/** string Move::printMove(int piece, int capture)
 {
     string res;
 
@@ -136,4 +167,5 @@ string Move::printMove(int piece, int capture)
 
     return res;
 }
+**/
 

@@ -11,18 +11,19 @@ using namespace std;
 
 class Move {
 public:
-    int initial_row;
-    int initial_col;
-    int final_row;
-    int final_col;
+    int initial;
+    int final;
 
 public:
-    explicit Move(int row1, int col1, int row2, int col2);
+    explicit Move(int sq1, int sq2, int piece1, int take);
+    //explicit Move(int initial, int final);
+    int getInitial();
+    int getFinal();
     int getInitialRow();
     int getFinalRow();
     int getInitialCol();
     int getFinalCol();
-    string printMove(int piece, int capture);
+    //string printMove(int piece, int capture);
 };
 
 
