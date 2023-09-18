@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files\JetBrains\CLion 2022.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\benrr\CLionProjects\chess -BC:\Users\benrr\CLionProjects\chess\cmake-build-debug
+  command = "C:\Program Files\JetBrains\CLion 2022.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\benrr\OneDrive\Documents\GitHub\matricesChessEngine -BC:\Users\benrr\OneDrive\Documents\GitHub\matricesChessEngine\cmake-build-debug
   description = Re-running CMake...
   generator = 1
 

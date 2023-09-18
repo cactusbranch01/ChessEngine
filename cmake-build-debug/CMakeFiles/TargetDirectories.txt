@@ -1,3 +1,3 @@
-C:/Users/benrr/CLionProjects/chess/cmake-build-debug/CMakeFiles/chess.dir
-C:/Users/benrr/CLionProjects/chess/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/benrr/CLionProjects/chess/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/benrr/OneDrive/Documents/GitHub/matricesChessEngine/cmake-build-debug/CMakeFiles/chess.dir
+C:/Users/benrr/OneDrive/Documents/GitHub/matricesChessEngine/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/benrr/OneDrive/Documents/GitHub/matricesChessEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir

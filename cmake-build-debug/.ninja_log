@@ -1,3 +1,5 @@
 # ninja log v5
 3	519	7167700187427442	CMakeFiles/chess.dir/main.cpp.obj	130ba4a3e365ebb1
 520	630	7167700188519963	chess.exe	c657b4888e5aed8e
+3	695	7167714435324997	CMakeFiles/chess.dir/main.cpp.obj	2a2afa30edd2f9fe
+695	839	7167714436762942	chess.exe	c657b4888e5aed8e

@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/benrr/CLionProjects/chess/cmake-build-debug",
-		"source" : "C:/Users/benrr/CLionProjects/chess"
+		"build" : "C:/Users/benrr/OneDrive/Documents/GitHub/matricesChessEngine/cmake-build-debug",
+		"source" : "C:/Users/benrr/OneDrive/Documents/GitHub/matricesChessEngine"
 	},
 	"version" : 
 	{

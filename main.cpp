@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+// Will this comment be committed.
 
 // Constants for piece labels
 const int EMPTY = 0;
