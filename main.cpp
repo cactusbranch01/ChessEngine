@@ -10,13 +10,16 @@ const int ROOK = 4;
 const int QUEEN = 5;
 const int KING = 6;
 
+// Function to create a new chessboard in starting position
 std::vector<std::vector<int>> initializeChessboard() {
     std::vector<std::vector<int>> chessboard(8, std::vector<int>(8, EMPTY));
     // Initialize the white pieces (positive integers)
     chessboard[0] = {ROOK, KNIGHT, BISHOP, QUEEN, KING, BISHOP, KNIGHT, ROOK};
+
     for (int i = 0; i < 8; i++) {
         chessboard[1][i] = PAWN;
     }
+
     // Initialize the black pieces (negative integers)
     chessboard[7] = {-ROOK, -KNIGHT, -BISHOP, -QUEEN, -KING, -BISHOP, -KNIGHT, -ROOK};
     for (int i = 0; i < 8; i++) {
@@ -25,9 +28,16 @@ std::vector<std::vector<int>> initializeChessboard() {
     return chessboard;
 }
 
+// Function to create a new empty chessboard
+std::vector<std::vector<int>> initializeEmptyChessboard() {
+    std::vector<std::vector<int>> chessboard(8, std::vector<int>(8, EMPTY));
+    return chessboard;
+}
+
 // Function to display the chessboard
 void displayChessboard(const std::vector<std::vector<int>>& chessboard) {
     std::string pieceSymbols = " PNBRQK";
+
     for (int i = 7; i >= 0; i--) { // Start from rank 8 (a8 to h8)
         for (int j = 0; j < 8; j++) { // File a to h
             int piece = chessboard[i][j];
@@ -51,6 +61,7 @@ std::vector<std::pair<int, int>> findPawnMoves(const std::vector<std::vector<int
     int color = (chessboard[row][col] > 0) ? 1 : -1; // Determine if it's white or black
     // Pawn's move one square forward
     int forwardRow = row + color;
+
     if (forwardRow >= 0 && forwardRow < 8 && chessboard[forwardRow][col] == EMPTY) {
         legalMoves.emplace_back(forwardRow, col);
         // Pawn's first move, can move two squares forward
@@ -64,12 +75,14 @@ std::vector<std::pair<int, int>> findPawnMoves(const std::vector<std::vector<int
     // Pawn captures diagonally
     int leftDiagonalRow = row + color;
     int leftDiagonalCol = col - 1;
+
     if (leftDiagonalRow >= 0 && leftDiagonalRow < 8 && leftDiagonalCol >= 0 && leftDiagonalCol < 8 &&
         chessboard[leftDiagonalRow][leftDiagonalCol] * color < 0) {
         legalMoves.emplace_back(leftDiagonalRow, leftDiagonalCol);
     }
     int rightDiagonalRow = row + color;
     int rightDiagonalCol = col + 1;
+
     if (rightDiagonalRow >= 0 && rightDiagonalRow < 8 && rightDiagonalCol >= 0 && rightDiagonalCol < 8 &&
         chessboard[rightDiagonalRow][rightDiagonalCol] * color < 0) {
         legalMoves.emplace_back(rightDiagonalRow, rightDiagonalCol);
@@ -83,6 +96,7 @@ std::vector<std::pair<int, int>> findKnightMoves(const std::vector<std::vector<i
     int color = (chessboard[row][col] > 0) ? 1 : -1; // Determine if it's a white or black knight
     // Possible knight moves
     int moves[8][2] = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
+
     for (auto & move : moves) {
         int newRow = row + move[0];
         int newCol = col + move[1];
@@ -103,6 +117,7 @@ std::vector<std::pair<int, int>> findBishopMoves(const std::vector<std::vector<i
     int color = (chessboard[row][col] > 0) ? 1 : -1; // Determine if it's a white or black bishop
     // Define directions for diagonal movement (four directions)
     int directions[4][2] = {{1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+
     for (auto & direction : directions) {
         for (int step = 1; step <= 7; step++) {
             int newRow = row + direction[0] * step;
@@ -136,6 +151,7 @@ std::vector<std::pair<int, int>> findRookMoves(const std::vector<std::vector<int
     int color = (chessboard[row][col] > 0) ? 1 : -1; // Determine if it's a white or black rook
     // Define directions for orthogonal movement (four directions)
     int directions[4][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
     for (auto & direction : directions) {
         for (int step = 1; step <= 7; step++) {
             int newRow = row + direction[0] * step;
@@ -170,6 +186,7 @@ std::vector<std::pair<int, int>> findQueenMoves(const std::vector<std::vector<in
     int color = (chessboard[row][col] > 0) ? 1 : -1; // Determine if it's a white or black queen
     // Define directions for orthogonal and diagonal movement (eight directions)
     int directions[8][2] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
+
     for (auto & direction : directions) {
         for (int step = 1; step <= 7; step++) {
             int newRow = row + direction[0] * step;
@@ -203,6 +220,7 @@ std::vector<std::pair<int, int>> findKingMoves(const std::vector<std::vector<int
     int color = (chessboard[row][col] > 0) ? 1 : -1; // Determine if it's a white or black king
     // Possible king moves (orthogonal and diagonal)
     int moves[8][2] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+
     for (auto & move : moves) {
         int newRow = row + move[0];
         int newCol = col + move[1];
@@ -221,6 +239,7 @@ std::vector<std::pair<int, int>> findKingMoves(const std::vector<std::vector<int
 std::vector<std::pair<int, int>> findAllLegalMoves(const std::vector<std::vector<int>>& chessboard, int sideToPlay) {
     std::vector<std::pair<int, int>> allLegalMoves;
     std::vector<std::pair<int, int>> pieceMoves; // Declare a variable to hold the moves
+
     // Iterate over the entire chessboard
     for (int row = 0; row < 8; row++) {
         for (int col = 0; col < 8; col++) {
@@ -272,10 +291,15 @@ std::vector<std::pair<int, int>> findAllLegalMoves(const std::vector<std::vector
     return allLegalMoves;
 }
 
-// Function to make a deep copy of the chessboard
+// Function to make a deep copy of the chessboard for plying
 std::vector<std::vector<int>> copyChessboard(const std::vector<std::vector<int>>& chessboard) {
     std::vector<std::vector<int>> copy(chessboard);
     return copy;
+}
+
+// Function to evaluate the potential moves and potential responses for one move ahead
+std::vector<std::vector<int>> ply(const std::vector<std::vector<int>>& chessboard) {
+    return chessboard;
 }
 
 int main() {
