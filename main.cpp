@@ -235,87 +235,220 @@ std::vector<std::pair<int, int>> findKingMoves(const std::vector<std::vector<int
     return legalMoves;
 }
 
-// Function to find all legal moves for all pieces on the chessboard for a specific side
-std::vector<std::pair<int, int>> findAllLegalMoves(const std::vector<std::vector<int>>& chessboard, int sideToPlay) {
-    std::vector<std::pair<int, int>> allLegalMoves;
-    std::vector<std::pair<int, int>> pieceMoves; // Declare a variable to hold the moves
-
-    // Iterate over the entire chessboard
-    for (int row = 0; row < 8; row++) {
-        for (int col = 0; col < 8; col++) {
-            int piece = chessboard[row][col];
-            // Determine the piece type (pawn, knight, bishop, rook, queen, king)
-            switch (std::abs(piece)) {
-                case PAWN:
-                    if (piece * sideToPlay > 0) { // Check if it's the correct side to play
-                        pieceMoves = findPawnMoves(chessboard, row, col);
-                        allLegalMoves.insert(allLegalMoves.end(), pieceMoves.begin(), pieceMoves.end());
-                    }
-                    break;
-                case KNIGHT:
-                    if (piece * sideToPlay > 0) {
-                        pieceMoves = findKnightMoves(chessboard, row, col);
-                        allLegalMoves.insert(allLegalMoves.end(), pieceMoves.begin(), pieceMoves.end());
-                    }
-                    break;
-                case BISHOP:
-                    if (piece * sideToPlay > 0) {
-                        pieceMoves = findBishopMoves(chessboard, row, col);
-                        allLegalMoves.insert(allLegalMoves.end(), pieceMoves.begin(), pieceMoves.end());
-                    }
-                    break;
-                case ROOK:
-                    if (piece * sideToPlay > 0) {
-                        pieceMoves = findRookMoves(chessboard, row, col);
-                        allLegalMoves.insert(allLegalMoves.end(), pieceMoves.begin(), pieceMoves.end());
-                    }
-                    break;
-                case QUEEN:
-                    if (piece * sideToPlay > 0) {
-                        pieceMoves = findQueenMoves(chessboard, row, col);
-                        allLegalMoves.insert(allLegalMoves.end(), pieceMoves.begin(), pieceMoves.end());
-                    }
-                    break;
-                case KING:
-                    if (piece * sideToPlay > 0) {
-                        pieceMoves = findKingMoves(chessboard, row, col);
-                        allLegalMoves.insert(allLegalMoves.end(), pieceMoves.begin(), pieceMoves.end());
-                    }
-                    break;
-                default:
-                    // Empty square
-                    break;
-            }
-        }
-    }
-    return allLegalMoves;
-}
-
 // Function to make a deep copy of the chessboard for plying
 std::vector<std::vector<int>> copyChessboard(const std::vector<std::vector<int>>& chessboard) {
     std::vector<std::vector<int>> copy(chessboard);
     return copy;
 }
 
-// Function to evaluate the potential moves and potential responses for one move ahead
-std::vector<std::vector<int>> ply(const std::vector<std::vector<int>>& chessboard) {
-    return chessboard;
+// Function to generate all possible moves for a given side
+std::vector<std::vector<std::vector<int>>> retrievePossibleMoves(const std::vector<std::vector<int>>& chessboard, int sideToPlay) {
+    std::vector<std::vector<std::vector<int>>> allPossiblePositions;
+
+    // Iterate over the entire chessboard
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            int piece = chessboard[row][col];
+
+            // Determine the piece type (pawn, knight, bishop, rook, queen, king)
+            switch (std::abs(piece)) {
+                case PAWN:
+                    if (piece * sideToPlay > 0) {
+                        std::vector<std::pair<int, int>> possibleMoves = findPawnMoves(chessboard, row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : possibleMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            allPossiblePositions.push_back(tempBoard);
+                        }
+                    }
+                    break;
+                case KNIGHT:
+                    if (piece * sideToPlay > 0) {
+                        std::vector<std::pair<int, int>> possibleMoves = findKnightMoves(chessboard, row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : possibleMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            allPossiblePositions.push_back(tempBoard);
+                        }
+                    }
+                    break;
+                case BISHOP:
+                    if (piece * sideToPlay > 0) {
+                        std::vector<std::pair<int, int>> possibleMoves = findBishopMoves(chessboard, row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : possibleMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            allPossiblePositions.push_back(tempBoard);
+                        }
+                    }
+                    break;
+                case ROOK:
+                    if (piece * sideToPlay > 0) {
+                        std::vector<std::pair<int, int>> possibleMoves = findRookMoves(chessboard, row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : possibleMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            allPossiblePositions.push_back(tempBoard);
+                        }
+                    }
+                    break;
+                case QUEEN:
+                    if (piece * sideToPlay > 0) {
+                        std::vector<std::pair<int, int>> possibleMoves = findQueenMoves(chessboard, row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : possibleMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            allPossiblePositions.push_back(tempBoard);
+                        }
+                    }
+                    break;
+                case KING:
+                    if (piece * sideToPlay > 0) {
+                        std::vector<std::pair<int, int>> possibleMoves = findKingMoves(chessboard, row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : possibleMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            allPossiblePositions.push_back(tempBoard);
+                        }
+                    }
+                    break;
+                default:
+                    // Empty square or opponent's piece
+                    break;
+            }
+        }
+    }
+    return allPossiblePositions;
+}
+
+// Recursive function to generate all possible moves and positions up to a given depth
+std::vector<std::vector<std::vector<int>>> ply(std::vector<std::vector<int>> chessboard, int depth, int side) {
+    std::vector<std::vector<std::vector<int>>> allPossiblePositions;
+
+    if (depth == 0) {
+        // If depth is 0, return the current position as is (no further exploration)
+        allPossiblePositions.push_back(chessboard);
+        return allPossiblePositions;
+    }
+
+    // Iterate over the entire chessboard
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 8; col++) {
+            int piece = chessboard[row][col];
+
+            // Determine the piece type (pawn, knight, bishop, rook, queen, king)
+            switch (std::abs(piece)) {
+                case PAWN:
+                    if (piece * depth > 0) {
+                        std::vector<std::pair<int, int>> allLegalMoves = findPawnMoves(copyChessboard(chessboard), row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : allLegalMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            // Recursively explore the resulting positions
+                            std::vector<std::vector<std::vector<int>>> childPositions = ply(tempBoard, depth - 1, side * -1);
+                            allPossiblePositions.insert(allPossiblePositions.end(), childPositions.begin(), childPositions.end());
+                        }
+                    }
+                    break;
+                case KNIGHT:
+                    if (piece * depth > 0) {
+                        std::vector<std::pair<int, int>> allLegalMoves = findKnightMoves(copyChessboard(chessboard), row, col);
+
+                        // For each legal move for the current piece
+                        for (const auto& move : allLegalMoves) {
+                            int newRow = move.first;
+                            int newCol = move.second;
+
+                            // Simulate the move
+                            std::vector<std::vector<int>> tempBoard = copyChessboard(chessboard);
+                            tempBoard[newRow][newCol] = piece;
+                            tempBoard[row][col] = EMPTY;
+
+                            // Recursively explore the resulting positions
+                            std::vector<std::vector<std::vector<int>>> childPositions = ply(tempBoard, depth - 1, side * -1);
+                            allPossiblePositions.insert(allPossiblePositions.end(), childPositions.begin(), childPositions.end());
+                        }
+                    }
+                    break;
+                    // Handle other pieces similarly
+                default:
+                    // Empty square or opponent's piece
+                    break;
+            }
+        }
+    }
+
+    return allPossiblePositions;
 }
 
 int main() {
     std::vector<std::vector<int>> chessboard = initializeChessboard();
-    displayChessboard(chessboard);
 
-    std::vector<std::pair<int, int>> allLegalMoves = findAllLegalMoves(chessboard, 1);
-    // std::vector<std::pair<int, int>> allLegalMoves = findAllLegalMoves(chessboard, -1);
+    // Specify the depth for exploration (e.g., depth = 2 for white and black moves)
+    int depth = 2;
 
-    std::cout << "All Legal Moves on the Chessboard:" << std::endl;
-    for (const auto& move : allLegalMoves) {
-        char file = 'a' + move.second;
-        int rank = move.first + 1;
-        std::cout << file << rank << " ";
+    // Generate all possible positions up to the specified depth
+    std::vector<std::vector<std::vector<int>>> allPossiblePositions = ply(chessboard, depth, 1);
+
+    for (const auto& board : allPossiblePositions) {
+        displayChessboard(board);
     }
-    std::cout << std::endl;
 
     return 0;
 }
