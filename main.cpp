@@ -370,7 +370,7 @@ std::vector<std::vector<std::vector<int>>> retrievePossibleMoves(const std::vect
 }
 
 // Recursive function to generate all possible moves and positions up to a given depth
-std::vector<std::vector<std::vector<int>>> ply(std::vector<std::vector<int>> chessboard, int depth, int side) {
+std::vector<std::vector<std::vector<int>>> ply(const std::vector<std::vector<int>>& chessboard, int depth, int side) {
     std::vector<std::vector<std::vector<int>>> allPossiblePositions;
 
     if (depth == 0) {
@@ -379,32 +379,39 @@ std::vector<std::vector<std::vector<int>>> ply(std::vector<std::vector<int>> che
         return allPossiblePositions;
     }
 
-    std::vector<std::vector<std::vector<int>>> plyPositions;
+    std::vector<std::vector<std::vector<int>>> tempPositions1;
+    std::vector<std::vector<std::vector<int>>> tempPositions2;
     for (int i = 0; i < depth; i++) {
-        std::vector<std::vector<std::vector<int>>> possiblePositions = retrievePossibleMoves(chessboard, side);
-        side *= -1;
-        plyPositions.clear();
-        for (const auto& board :possiblePositions) {
-            std::vector<std::vector<std::vector<int>>> possibleReplies = retrievePossibleMoves(board, side);
-            plyPositions.insert(plyPositions.end(), possibleReplies.begin(), possibleReplies.end());
+        if (i == 0) {
+            tempPositions1 = retrievePossibleMoves(chessboard, side);
+        }
+        else {
+            tempPositions1.clear();
+            for (const auto& board :tempPositions2) {
+                std::vector<std::vector<std::vector<int>>> possibleReplies = retrievePossibleMoves(board, side);
+                tempPositions1.insert(tempPositions1.end(), possibleReplies.begin(), possibleReplies.end());
+            }
         }
         side *= -1;
+        tempPositions2.clear();
+        for (const auto& board :tempPositions1) {
+            std::vector<std::vector<std::vector<int>>> possibleReplies = retrievePossibleMoves(board, side);
+            tempPositions2.insert(tempPositions2.end(), possibleReplies.begin(), possibleReplies.end());
+        }
     }
-    return plyPositions;
+    return tempPositions2;
 }
 
 int main() {
     std::vector<std::vector<int>> chessboard = initializeChessboard();
-
-    // Specify the depth for exploration (e.g., depth = 2 for white and black moves)
-    int depth = 2;
+    
+    int depth = 3;
 
     // Generate all possible positions up to the specified depth
     std::vector<std::vector<std::vector<int>>> allPossiblePositions = ply(chessboard, depth, 1);
 
-    for (const auto& board : allPossiblePositions) {
-        displayChessboard(board);
-    }
+    displayChessboard(allPossiblePositions[9999]);
+    std::cout << allPossiblePositions.size() << std::endl;
 
     return 0;
 }
