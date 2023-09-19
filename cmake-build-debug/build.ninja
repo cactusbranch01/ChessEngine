@@ -55,12 +55,6 @@ build CMakeFiles/chess.dir/main.cpp.obj: CXX_COMPILER__chess_Debug C$:/Users/ben
   OBJECT_DIR = CMakeFiles\chess.dir
   OBJECT_FILE_DIR = CMakeFiles\chess.dir
 
-build CMakeFiles/chess.dir/chess.cpp.obj: CXX_COMPILER__chess_Debug C$:/Users/benrr/OneDrive/Documents/GitHub/matricesChessEngine/chess.cpp || cmake_object_order_depends_target_chess
-  DEP_FILE = CMakeFiles\chess.dir\chess.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\chess.dir
-  OBJECT_FILE_DIR = CMakeFiles\chess.dir
-
 
 # =============================================================================
 # Link build statements for EXECUTABLE target chess
@@ -69,7 +63,7 @@ build CMakeFiles/chess.dir/chess.cpp.obj: CXX_COMPILER__chess_Debug C$:/Users/be
 #############################################
 # Link the executable chess.exe
 
-build chess.exe: CXX_EXECUTABLE_LINKER__chess_Debug CMakeFiles/chess.dir/main.cpp.obj CMakeFiles/chess.dir/chess.cpp.obj
+build chess.exe: CXX_EXECUTABLE_LINKER__chess_Debug CMakeFiles/chess.dir/main.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\chess.dir
