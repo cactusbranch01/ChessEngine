@@ -2,8 +2,7 @@
 // Created by benrr on 9/19/2023.
 //
 
-#include <iostream>
-#include <vector>
+#include "eval.h"
 
 // Constants for piece labels
 const int EMPTY = 0;
@@ -409,12 +408,13 @@ std::vector<std::vector<std::vector<int>>> ply(const std::vector<std::vector<int
 int main() {
     std::vector<std::vector<int>> chessboard = initializeChessboard();
 
-    int depth = 2;
+    int depth = 1;
 
     // Generate all possible positions up to the specified depth
     std::vector<std::vector<std::vector<int>>> allPossiblePositions = ply(chessboard, depth, 1);
 
-    displayChessboard(allPossiblePositions[197741]);
+    displayChessboard(allPossiblePositions[0]);
+    std::cout << evaluate(allPossiblePositions[0]) << std::endl;
     std::cout << allPossiblePositions.size() << std::endl;
 
     return 0;
