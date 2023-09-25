@@ -4,3 +4,8 @@
 14	1490	7168663523490826	CMakeFiles/chess.dir/Chess.cpp.obj	a47f0947a226f4d1
 12	1168	7168666568075340	CMakeFiles/chess.dir/chess.cpp.obj	f2b8978e4c2f7519
 5	599	7169518367322381	CMakeFiles/chess.dir/eval.cpp.obj	7e9534d40d81c8ec
+8	460	7173280029320653	CMakeFiles/chess.dir/eval.cpp.obj	7e9534d40d81c8ec
+3	925	7173280033954704	CMakeFiles/chess.dir/main.cpp.obj	2a2afa30edd2f9fe
+925	1287	7173280037568218	chess.exe	bb9e9f4562b5a9b6
+2	881	7173280145344753	CMakeFiles/chess.dir/main.cpp.obj	2a2afa30edd2f9fe
+882	1031	7173280146804497	chess.exe	bb9e9f4562b5a9b6
