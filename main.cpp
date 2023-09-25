@@ -408,7 +408,7 @@ std::vector<std::vector<std::vector<int>>> ply(const std::vector<std::vector<int
 int main() {
     std::vector<std::vector<int>> chessboard = initializeChessboard();
 
-    int depth = 2;
+    int depth = 10;
 
     // Generate all possible positions up to the specified depth
     std::vector<std::vector<std::vector<int>>> allPossiblePositions = ply(chessboard, depth, 1);

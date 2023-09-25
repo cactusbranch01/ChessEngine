@@ -5,7 +5,7 @@
 #include "eval.h"
 
 float CAST_INT_TO_FLOAT[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0};
-int DEFAULT_PIECE_WEIGHTS[] = {0, 1, 3, 3, 5, 9, 100};
+[[maybe_unused]] int DEFAULT_PIECE_WEIGHTS[] = {0, 1, 3, 3, 5, 9, 100};
 
 float PIECE_WEIGHTS_MIDGAME[] = {0.0, 0.8, 3.2, 3.3, 4.7, 9.4};
 float PIECE_WEIGHTS_THRESHOLD[] = {0.0, 0.9, 3.2, 3.3, 4.8, 9.4};
