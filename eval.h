@@ -9,6 +9,6 @@
 #include <vector>
 
 // Function declaration to create a new empty chessboard
-float evaluate(std::vector<std::vector<int>>& chessboard);
+float evaluate(std::vector<std::vector<int>> &chessboard);
 
 #endif //CHESS_EVAL_H

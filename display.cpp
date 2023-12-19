@@ -17,7 +17,7 @@ char displayCol(char col) {
     return 'a' + col;
 }
 
-std::string displayChessboard(const std::vector<std::vector<char>>& chessboard) {
+std::string displayChessboard(const std::vector<std::vector<char>> &chessboard) {
     std::string result;
 
     for (int i = 7; i >= 0; i--) { // Start from rank 8 (a8 to h8)
@@ -34,29 +34,37 @@ std::string displayChessboard(const std::vector<std::vector<char>>& chessboard) 
     return result;
 }
 
-std::string displayMove(move move, char startPiece, char targetPiece) {
-    char startCol = displayCol(move.start.col);
-    char startRow = displayRow(move.start.row);
-    char finalCol = displayCol(move.final.col);
-    char finalRow = displayRow(move.final.row);
-
+std::string displayMove(move move) {
     std::string notation;
 
+    // Check for castling
+    if ((move.piece == W_KING || move.piece == B_KING) && abs(move.start.col - move.final.col) == 2) {
+        // Kingside castling
+        if (move.final.col - move.start.col == 2) {
+            notation = (move.piece == W_KING) ? "O-O" : "o-o";
+        }
+            // Queenside castling
+        else {
+            notation = (move.piece == W_KING) ? "O-O-O" : "o-o-o";
+        }
+        return notation;
+    }
+
     // For pawns, the file is only included on capture
-    if (startPiece == W_PAWN || startPiece == B_PAWN) {
-        if (targetPiece != EMPTY) {
-            notation += startCol; // Include file only on capture
+    if (move.piece == W_PAWN || move.piece == B_PAWN) {
+        if (move.target != EMPTY) {
+            notation += move.start.col; // Include file only on capture
             notation += "x";
         }
     } else {
-        notation += displayPiece(startPiece);
-        if (targetPiece != EMPTY) {
+        notation += displayPiece(move.piece);
+        if (move.target != EMPTY) {
             notation += "x";
         }
     }
 
-    notation += finalCol;
-    notation += finalRow;
+    notation += displayCol(move.final.col);
+    notation += displayRow(move.final.row);
 
     return notation;
 }

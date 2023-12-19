@@ -386,7 +386,9 @@ CMakeFiles/chess.dir/eval.cpp.obj: C:/Users/benrr/Documents/ExtraCS/ChessEngine/
   C:/Program\ Files/JetBrains/CLion\ 2022.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h \
   C:/Program\ Files/JetBrains/CLion\ 2022.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h \
-  C:/Program\ Files/JetBrains/CLion\ 2022.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc
+  C:/Program\ Files/JetBrains/CLion\ 2022.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc \
+  C:/Users/benrr/Documents/ExtraCS/ChessEngine/find.h \
+  C:/Users/benrr/Documents/ExtraCS/ChessEngine/chess.h
 
 CMakeFiles/chess.dir/find.cpp.obj: C:/Users/benrr/Documents/ExtraCS/ChessEngine/find.cpp \
   C:/Users/benrr/Documents/ExtraCS/ChessEngine/find.h \

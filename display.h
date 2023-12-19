@@ -8,10 +8,14 @@
 #include "find.h"
 
 char displayPiece(char piece);
+
 char displayRow(char row);
+
 char displayCol(char col);
-std::string displayChessboard(const std::vector<std::vector<char>>& chessboard);
-std::string displayMove(move move, char startPiece, char targetPiece);
+
+std::string displayChessboard(const std::vector<std::vector<char>> &chessboard);
+
+std::string displayMove(move move);
 
 
 #endif //CHESS_DISPLAY_H

@@ -40,7 +40,9 @@ struct square {
 };
 
 std::vector<std::vector<char>> initializeChessboard();
-[[maybe_unused]] std::vector<std::vector<char>> copyChessboard(const std::vector<std::vector<char>>& chessboard);
+
+[[maybe_unused]] std::vector<std::vector<char>> copyChessboard(const std::vector<std::vector<char>> &chessboard);
+
 bool isWhite(char piece);
 
 

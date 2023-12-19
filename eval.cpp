@@ -3,6 +3,7 @@
 //
 
 #include "eval.h"
+#include "find.h"
 
 float CAST_INT_TO_FLOAT[] = {1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0};
 [[maybe_unused]] int DEFAULT_PIECE_WEIGHTS[] = {0, 1, 3, 3, 5, 9, 100};
@@ -80,3 +81,39 @@ float evaluate(std::vector<std::vector<int>>& chessboard) {
 
     return materialBalance;
 }
+
+/**
+// Function to evaluate material on the board with better weights
+float updateEval(std::vector<std::vector<int>>& chessboard, float oldEval, move move) {
+
+
+
+
+    int gamestate = 0;
+    if (whitePieces[5] != blackPieces[5]) {
+        gamestate = 1;
+    }
+    if (whitePieces[5] == 0) {
+        gamestate = 2;
+    }
+
+    for (int i = 0; i < 6; i++) {
+        materialBalance += CAST_INT_TO_FLOAT[whitePieces[i]] * PIECE_WEIGHTS[gamestate][i];
+        materialBalance -= CAST_INT_TO_FLOAT[blackPieces[i]] * PIECE_WEIGHTS[gamestate][i];
+    }
+    if (whitePieces[2] >= 2) {
+        materialBalance += BISHOP_PAIR_BONUS[gamestate];
+    }
+    if (blackPieces[2] >= 2) {
+        materialBalance -= BISHOP_PAIR_BONUS[gamestate];
+    }
+    if (whitePieces[3] >= 2) {
+        materialBalance += SECOND_ROOK_PENALTY[gamestate];
+    }
+    if (blackPieces[3] >= 2) {
+        materialBalance -= SECOND_ROOK_PENALTY[gamestate];
+    }
+
+    return materialBalance;
+}
+ **/

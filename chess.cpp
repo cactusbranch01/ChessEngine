@@ -4,8 +4,8 @@
 
 #include "chess.h"
 
-std::vector<std::vector<char>> initializeChessboard() {
-    std::vector<std::vector<char>> chessboard(8, std::vector<char>(8, EMPTY));
+std::vector <std::vector<char>> initializeChessboard() {
+    std::vector <std::vector<char>> chessboard(8, std::vector<char>(8, EMPTY));
     // Initialize the white pieces (positive integers)
     chessboard[0] = {W_ROOK, W_KNIGHT, W_BISHOP, W_QUEEN, W_KING, W_BISHOP, W_KNIGHT, W_ROOK};
     for (int i = 0; i < 8; i++) {
@@ -20,8 +20,8 @@ std::vector<std::vector<char>> initializeChessboard() {
 }
 
 // Function to make a deep copy of the chessboard
-[[maybe_unused]] std::vector<std::vector<char>> copyChessboard(const std::vector<std::vector<char>>& chessboard) {
-    std::vector<std::vector<char>> copy(chessboard);
+[[maybe_unused]] std::vector <std::vector<char>> copyChessboard(const std::vector <std::vector<char>> &chessboard) {
+    std::vector <std::vector<char>> copy(chessboard);
     return copy;
 }
 
@@ -35,5 +35,5 @@ bool isWhite(char piece) {
     if (piece == EMPTY) {
         throw std::runtime_error("isWhite should never be called on an empty square");
     }
-    return piece  % 2 == 0;
+    return piece % 2 == 0;
 }
